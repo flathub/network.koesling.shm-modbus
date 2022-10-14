@@ -16,8 +16,8 @@ modules:
 
     sources:
       - type: git
-        tag: v1.2.3
-        commit: 5a1d7f6a85fb00b109c04f22a9bdf2e3b4da7ba6
+        tag: v1.3.0-beta1
+        commit: 3340f2de55e2d79a7698dbbace4fa0feafe9238e
         url: https://github.com/NikolasK-source/modbus_tcp_client_shm.git
         disable-shallow-clone: true
 
@@ -127,6 +127,6 @@ modules:
 
     sources:
       - type: git
-        tag: v1.1.0-beta1
-        commit: 57e6b897204a69cea66df96d060b2dd5a7cbb8a3 
+        tag: v1.1.0-beta2
+        commit: b70b06b5591da0b5eb79f25d00b6a6790bb79d93 
         url: https://github.com/NikolasK-source/SHM_Modbus.git
