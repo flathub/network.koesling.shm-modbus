@@ -87,6 +87,17 @@ modules:
         commit: 150198ef75c0fa066eb1e312c29a60744433081d 
         url: https://github.com/NikolasK-source/stdin_to_modbus_shm.git
 
+  - name: signal_gen
+    buildsystem: simple
+    build-commands:
+      - pip3 install --prefix=/app --no-deps .
+      - mv /app/bin/signalgen /app/bin/signal-gen
+    sources:
+      - type: git
+        tag: v1.0.0
+        commit: 418bcede5f65faf8053cb1f764edf6f1b3b03c32
+        url: https://github.com/NikolasK-source/shm-modbus-signal-gen.git
+
   - name: launch_scripts_and_metadata
     buildsystem: simple
     build-commands:
@@ -101,6 +112,6 @@ modules:
 
     sources:
       - type: git
-        tag: v1.0.4
-        commit: b109137727c3c3f2b54e51d260b45d42ec745903 
+        tag: v1.1.0
+        commit: 018be370948e831f3fb552b40f4fc5e2dc8f96ab 
         url: https://github.com/NikolasK-source/SHM_Modbus.git
