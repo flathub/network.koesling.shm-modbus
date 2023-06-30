@@ -98,6 +98,23 @@ modules:
         commit: ae911cceebaedfd4d6acab0a9f66d237ea79e3e8
         url: https://github.com/NikolasK-source/shm-modbus-signal-gen.git
 
+  - name: wago-modbus-coupler-shm
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCLANG_FORMAT=OFF
+      - -DCOMPILER_WARNINGS=OFF
+      - -DBUILD_DOC=OFF
+
+    post-install:
+      - mv ${FLATPAK_DEST}/bin/wago_modbus_coupler_shm ${FLATPAK_DEST}/bin/wago-modbus-coupler-shm
+
+    sources:
+      - type: git
+        tag: v1.1.1
+        commit: 6bed8de3342132d191171be9af2208fe388dbde7 
+        url: https://github.com/NikolasK-source/wago_modbus_coupler_shm.git
+
   - name: launch_scripts_and_metadata
     buildsystem: simple
     build-commands:
@@ -112,6 +129,6 @@ modules:
 
     sources:
       - type: git
-        tag: v1.1.2
-        commit: f71317321b77e17aea20cba1668c866662376dab 
+        tag: v1.2.0
+        commit: b2b51f1fb20bf17236e333bbf99cb0d61b829fdb 
         url: https://github.com/NikolasK-source/SHM_Modbus.git
