@@ -129,6 +129,6 @@ modules:
 
     sources:
       - type: git
-        tag: v1.2.0
-        commit: b2b51f1fb20bf17236e333bbf99cb0d61b829fdb 
+        tag: v1.2.1
+        commit: 1a6b206f3981887c8be75605fa4ecdba493831ac 
         url: https://github.com/NikolasK-source/SHM_Modbus.git
