@@ -3,9 +3,6 @@ runtime: org.kde.Platform
 runtime-version: '6.6'
 sdk: org.kde.Sdk
 command: shm-modbus
-supported_architectures:
-  - aarch64
-  - x86_64
 finish-args:
   - --device=shm
   - --share=network
