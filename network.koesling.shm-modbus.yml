@@ -41,7 +41,7 @@ modules:
         tag: v1.5.3
         commit: 9b336c61c130138bf43f18fc089322254ed09526
         url: https://github.com/NikolasK-source/modbus_tcp_client_shm.git
-    disable-shallow-clone: true
+        disable-shallow-clone: true
 
   - name: signal_gen
     buildsystem: simple
