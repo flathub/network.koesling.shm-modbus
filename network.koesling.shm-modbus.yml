@@ -10,6 +10,73 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
 modules:
+  - name: cxxopts
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCXXOPTS_BUILD_EXAMPLES=OFF
+      - -DCXXOPTS_BUILD_TESTS=OFF
+    sources:
+      - type: git
+        tag: v3.2.0
+        url: https://github.com/jarro2783/cxxopts.git
+
+  - name: cxxshm
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCLANG_FORMAT=OFF
+      - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DBUILD_DOC=OFF
+      - -DENABLE_TEST=OFF
+    sources:
+      - type: git
+        tag: v2.0.2
+        url: https://github.com/NikolasK-source/cxxshm.git
+
+  - name: cxxsemaphore
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCLANG_FORMAT=OFF
+      - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DBUILD_DOC=OFF
+      - -DENABLE_TEST=OFF
+    sources:
+      - type: git
+        tag: v2.0.2
+        url: https://github.com/NikolasK-source/cxxsemaphore.git
+
+  - name: cxxitimer
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCLANG_FORMAT=OFF
+      - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DBUILD_DOC=OFF
+      - -DENABLE_TEST=OFF
+    sources:
+      - type: git
+        tag: v2.0.2
+        url: https://github.com/NikolasK-source/cxxitimer.git
+
+  - name: nlohmann_json
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        tag: v3.11.3
+        url: https://github.com/nlohmann/json.git
+
+  - name: libmodbus
+    buildsystem: autotools
+    sources:
+      - type: git
+        tag: v3.1.10
+        url: https://github.com/stephane/libmodbus.git
+
   - name: python3-PySide6
     buildsystem: simple
     build-commands:
@@ -47,12 +114,13 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCLANG_FORMAT=OFF
       - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DENABLE_TEST=OFF
 
     sources:
       - type: git
-        tag: v1.5.3
-        commit: 9b336c61c130138bf43f18fc089322254ed09526
-        url: https://github.com/NikolasK-source/modbus_tcp_client_shm.git
+        tag: v1.6.3
+        url: https://github.com/SHMModbus/modbus_tcp_client_shm.git
         disable-shallow-clone: true
 
   - name: signal_gen
@@ -60,26 +128,21 @@ modules:
     build-commands:
       - pip3 install --prefix=/app --no-deps .
       - mv /app/bin/signalgen /app/bin/signal-gen
+      - ln -s /app/bin/signal-gen /app/bin/shm-modbus-signal-gen
     sources:
       - type: git
         tag: v1.0.2
         commit: ae911cceebaedfd4d6acab0a9f66d237ea79e3e8
-        url: https://github.com/NikolasK-source/shm-modbus-signal-gen.git
+        url: https://github.com/SHMModbus/shm-modbus-signal-gen.git
 
   - name: gui
     buildsystem: simple
     build-commands:
       - pip3 install --prefix=/app --no-deps .
-      #- mkdir -p /app/share/shm-modbus-gui/py_ui
-      #- install -Dm555 src/*.py /app/share/shm-modbus-gui
-      #- chmod +x /app/share/shm-modbus-gui/main.py
-      #- install -Dm555 src/py_ui/*.py /app/share/shm-modbus-gui/py_ui
-      #- ln -s ../share/shm-modbus-gui/main.py /app/bin/shm-modbus-gui
     sources:
       - type: git
-        tag: v1.0.2
-        commit: c2211cae8dde627e592d94483c29827307b08b3d
-        url: https://github.com/NikolasK-source/shm_modbus_gui.git
+        tag: v2.1.0
+        url: https://github.com/SHMModbus/shm_modbus_gui.git
 
   - name: Modbus_RTU_client_shm
     buildsystem: cmake-ninja
@@ -87,12 +150,13 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCLANG_FORMAT=OFF
       - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DENABLE_TEST=OFF
 
     sources:
       - type: git
-        tag: v0.3.0
-        commit: 2e42384a3e4b14c2873765f178786ff52b07a078
-        url: https://github.com/NikolasK-source/modbus_rtu_client_shm.git
+        tag: v0.4.1
+        url: https://github.com/SHMModbus/modbus_rtu_client_shm.git
         disable-shallow-clone: true
 
   - name: write_shm
@@ -101,12 +165,27 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCLANG_FORMAT=OFF
       - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DENABLE_TEST=OFF
 
     sources:
       - type: git
-        tag: v1.0.0
-        commit: e11facb8ea556272b3d25d47e028f274f5bb4894 
-        url: https://github.com/NikolasK-source/write_shm.git
+        tag: v1.1.1
+        url: https://github.com/SHMModbus/write_shm.git
+
+  - name: shm_format
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCLANG_FORMAT=OFF
+      - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DENABLE_TEST=OFF
+
+    sources:
+      - type: git
+        tag: v2.0.1
+        url: https://github.com/SHMModbus/shm_format.git
 
   - name: SHM_random
     buildsystem: cmake-ninja
@@ -114,12 +193,13 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCLANG_FORMAT=OFF
       - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DENABLE_TEST=OFF
 
     sources:
       - type: git
-        tag: v1.2.0
-        commit: 0edd6983134d6675e1fd4efbd7f24b8fd44e8d9d 
-        url: https://github.com/NikolasK-source/shared_mem_random.git
+        tag: v1.4.0
+        url: https://github.com/SHMModbus/shared_mem_random.git
 
   - name: dump_shm
     buildsystem: cmake-ninja
@@ -127,12 +207,13 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCLANG_FORMAT=OFF
       - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DENABLE_TEST=OFF
 
     sources:
       - type: git
-        tag: v1.2.0
-        commit: 3611fdd25c4b7f611dffad017cd98c76b55d69a4 
-        url: https://github.com/NikolasK-source/dump_shm.git
+        tag: v1.3.1
+        url: https://github.com/SHMModbus/dump_shm.git
 
   - name: stdin-to-modbus-shm
     buildsystem: cmake-ninja
@@ -140,12 +221,13 @@ modules:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCLANG_FORMAT=OFF
       - -DCOMPILER_WARNINGS=OFF
+      - -DCLANG_TIDY=OFF
+      - -DENABLE_TEST=OFF
 
     sources:
       - type: git
-        tag: v1.2.0
-        commit: bde5f925590ad423584febfc7cb3daa27d46081f 
-        url: https://github.com/NikolasK-source/stdin_to_modbus_shm.git
+        tag: v1.5.0
+        url: https://github.com/SHMModbus/stdin_to_modbus_shm.git
 
   - name: wago-modbus-coupler-shm
     buildsystem: cmake-ninja
@@ -161,16 +243,12 @@ modules:
     sources:
       - type: git
         tag: v1.1.1
-        commit: 6bed8de3342132d191171be9af2208fe388dbde7 
-        url: https://github.com/NikolasK-source/wago_modbus_coupler_shm.git
+        url: https://github.com/SHMModbus/wago_modbus_coupler_shm.git
 
   - name: launch_scripts_and_metadata
     buildsystem: simple
     build-commands:
       - install -D -m 755 shm-modbus ${FLATPAK_DEST}/bin/shm-modbus
-      - install -D -m 644 guided-commands.sh ${FLATPAK_DEST}/bin/guided-commands.sh
-      - install -D -m 644 manual-commands.sh ${FLATPAK_DEST}/bin/manual-commands.sh
-
       - install -D -m 644 network.koesling.shm-modbus.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
       - install -D -m 644 -t "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps" ${FLATPAK_ID}.svg
       - install -D -m 644 ${FLATPAK_ID}_256.png "${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png"
@@ -178,6 +256,5 @@ modules:
 
     sources:
       - type: git
-        tag: v2.0.0-1
-        commit: 68e95df036b95ef9b1bca56ae0716301a1a5423b 
-        url: https://github.com/NikolasK-source/SHM_Modbus.git
+        tag: v2.1.0-1
+        url: https://github.com/SHMModbus/SHM_Modbus.git
