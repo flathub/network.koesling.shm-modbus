@@ -256,5 +256,5 @@ modules:
 
     sources:
       - type: git
-        tag: v2.1.0-1
+        tag: v2.1.0-2
         url: https://github.com/SHMModbus/SHM_Modbus.git
