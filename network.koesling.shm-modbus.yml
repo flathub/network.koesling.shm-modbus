@@ -141,7 +141,7 @@ modules:
       - pip3 install --prefix=/app --no-deps .
     sources:
       - type: git
-        tag: v2.1.0
+        tag: v2.1.1
         url: https://github.com/SHMModbus/shm_modbus_gui.git
 
   - name: Modbus_RTU_client_shm
@@ -198,7 +198,7 @@ modules:
 
     sources:
       - type: git
-        tag: v1.4.0
+        tag: v1.4.1
         url: https://github.com/SHMModbus/shared_mem_random.git
 
   - name: dump_shm
@@ -256,5 +256,5 @@ modules:
 
     sources:
       - type: git
-        tag: v2.1.0-2
+        tag: v2.1.1
         url: https://github.com/SHMModbus/SHM_Modbus.git
